@@ -1,5 +1,6 @@
 package com.tatemylove.SpaceShooter.Engine;
 
+import com.tatemylove.SpaceShooter.Engine.Commands.KeyInput;
 import com.tatemylove.SpaceShooter.Engine.Engine.Handler;
 import com.tatemylove.SpaceShooter.Engine.Engine.ID;
 import com.tatemylove.SpaceShooter.Engine.Engine.Player;
@@ -16,9 +17,11 @@ public class Game extends Canvas implements Runnable{
     private Handler handler;
 
     public Game(){
-        new Window(WIDTH, HEIGHT, "Test Game", this);
-
         handler = new Handler();
+
+        this.addKeyListener(new KeyInput(handler));
+
+        new Window(WIDTH, HEIGHT, "Test Game", this);
 
         handler.addObject(new Player(100, 100, ID.Player));
     }
